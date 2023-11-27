@@ -34,6 +34,7 @@ createApp({
         },
       ],
       activeSlide: 0,
+      activeThumb: 0,
     };
   },
   methods: {
@@ -42,12 +43,17 @@ createApp({
       if (this.activeSlide > this.slides.length - 1) {
         this.activeSlide = 0;
       }
+      this.activeThumb = this.activeSlide;
     },
     prev() {
       this.activeSlide--;
       if (this.activeSlide < 0) {
         this.activeSlide = this.slides.length - 1;
       }
+      this.activeThumb = this.activeSlide;
+    },
+    changeSlide(index) {
+      (this.activeSlide = index), (this.activeThumb = index);
     },
   },
 }).mount("#app");
